@@ -4,7 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../formvalidation/style.css">
+     <style>
+/* <!-- css code --> */
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#myForm{
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #f4f4f4;
+    border-radius: 10px;
+}
+
+#username{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#password{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background: #e0e0e0;
+}
+
+#confirm{
+      width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+   </style> 
+
 </head>
 <body>
     <h1>Form Validation</h1>
@@ -20,6 +84,45 @@
         <button type="submit" id="btn">Submit</button>
     </form>
 
-    <script src="../formvalidation/script.js"></script>
+    <!-- javascript code -->
+   <script> 
+    const myForm = document.getElementById("myForm");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const confirmInput = document.getElementById("confirm");
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", function (event) {
+  event.preventDefault();
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+  const confirm = confirmInput.value.trim();
+ 
+  if (username === "") {
+    btn.textContent = "Username is required.";
+    btn.style.backgroundColor = "red";
+    btn.style.color = "white";
+    return;
+  }
+  if (password === "") {
+    btn.textContent = "Password is required.";
+    btn.style.backgroundColor = "red";
+    btn.style.color = "white";
+    return;
+  }
+
+  if (password !== confirm) {
+    btn.textContent = "Password don't match";
+    btn.style.backgroundColor = "red";
+    btn.style.color = "white";
+    return;
+  }
+
+  btn.textContent = "Form submitted successfully!";
+  btn.style.backgroundColor = "green";
+  btn.style.color = "white";
+  appendMessage("Form submitted successfully!");
+});
+</script>
 </body>
 </html>
